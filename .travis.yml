@@ -1,6 +1,7 @@
 language: go
 go:
   - 1.12
+  
 jobs:
   include:
     -
@@ -11,3 +12,14 @@ jobs:
     -
       stage: install
       script: 'make install'
+
+matrix:
+  include:
+  - name: "1.11 Unit Test"
+    go: "1.11"
+    env: TEST_SUITE=suite_1_11
+  - name: "1.12 Unit Test"
+    go: "1.12"
+    env: TEST_SUITE=suite_1_12
+    
+script: echo "default script"
