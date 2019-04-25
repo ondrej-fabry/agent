@@ -1,13 +1,25 @@
 language: go
 go:
-  - tip
-jobs:
+  - 1.12
+  
+#jobs:
+#  include:
+#    -
+#      stage: build
+#      script: 'make build'
+#    -
+#      script: 'echo "TEST"'
+#    -
+#      stage: install
+#      script: 'make install'
+
+matrix:
   include:
-    -
-      stage: build
-      script: 'make build'
-    -
-      script: 'echo "TEST"'
-    -
-      stage: install
-      script: 'make install'
+  - name: "1.11 Unit Test"
+    go: "1.11"
+    env: TEST_SUITE=suite_1_11
+  - name: "1.12 Unit Test"
+    go: "1.12"
+    env: TEST_SUITE=suite_1_12
+    
+script: echo "default script"
