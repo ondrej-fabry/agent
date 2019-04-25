@@ -1,4 +1,13 @@
 language: go
-
 go:
-- tip
+  - tip
+jobs:
+  include:
+    -
+      stage: build
+      script: 'make build'
+    -
+      script: 'echo "TEST"'
+    -
+      stage: install
+      script: 'make install'
